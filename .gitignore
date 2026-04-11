@@ -1,0 +1,83 @@
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Packaging / install
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing / coverage / typing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Logs
+*.log
+logs/
+
+# ML / Keras / TensorFlow artifacts
+*.keras
+*.h5
+*.ckpt
+*.pb
+*.onnx
+*.pth
+*.pt
+backend/artifacts/
+
+# Training script outputs (ml/training/train.py)
+ml/data/*.npz
+
+# Large / unpacked datasets (download separately; do not commit binaries)
+data/ham10000_split/
+data/HAM10000_images_part_*/
+data/hmnist_*.csv
