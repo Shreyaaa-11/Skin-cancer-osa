@@ -31,21 +31,45 @@ export default function App() {
   };
 
   return (
-    <main style={{ maxWidth: 860, margin: "2rem auto", fontFamily: "Arial, sans-serif" }}>
-      <h1>Skin Cancer Classification</h1>
-      <p>Upload a dermoscopic image to get a 7-class prediction.</p>
-      <ImageUploader onChange={setFile} />
-      {previewUrl && (
-        <div style={{ marginTop: 12 }}>
-          <img src={previewUrl} alt="preview" style={{ width: 280, borderRadius: 8 }} />
+    <main style={{ minHeight: "100vh", background: "#f6f7fb", padding: "32px 16px" }}>
+      <div style={{ maxWidth: 920, margin: "0 auto", fontFamily: "Inter, Arial, sans-serif" }}>
+        <div style={{ padding: 18, borderRadius: 14, background: "#fff", border: "1px solid #eaeaea" }}>
+          <h1 style={{ marginTop: 0 }}>Skin Cancer Classification</h1>
+          <p style={{ color: "#555" }}>
+            Upload a dermoscopic image. You’ll get the model’s most likely class and confidence scores.
+          </p>
+  
+          <ImageUploader onChange={setFile} />
+  
+          {previewUrl && (
+            <div style={{ marginTop: 12 }}>
+              <img src={previewUrl} alt="preview" style={{ width: 320, maxWidth: "100%", borderRadius: 12 }} />
+            </div>
+          )}
+  
+          <button
+            style={{
+              marginTop: 12,
+              padding: "10px 14px",
+              borderRadius: 10,
+              border: "1px solid #ddd",
+              background: loading ? "#f1f1f1" : "#111827",
+              color: loading ? "#555" : "#fff",
+              cursor: loading ? "not-allowed" : "pointer",
+              fontWeight: 700,
+            }}
+            onClick={handlePredict}
+            disabled={loading}
+          >
+            {loading ? "Predicting..." : "Predict"}
+          </button>
+  
+          {loading && <Loader />}
+          {error && <p style={{ color: "crimson" }}>{error}</p>}
         </div>
-      )}
-      <button style={{ marginTop: 12 }} onClick={handlePredict} disabled={loading}>
-        Predict
-      </button>
-      {loading && <Loader />}
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
-      <PredictionResult result={result} />
+  
+        <PredictionResult result={result} />
+      </div>
     </main>
   );
 }
