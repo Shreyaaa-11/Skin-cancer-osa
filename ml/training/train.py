@@ -30,8 +30,8 @@ def compile_model(model: tf.keras.Model, lr: float):
         optimizer=tf.keras.optimizers.Adam(learning_rate=lr),
         loss="sparse_categorical_crossentropy",
         metrics=[
-            "accuracy",
-            tf.keras.metrics.Recall(name="recall"),
+            tf.keras.metrics.SparseCategoricalAccuracy(name="accuracy"),
+            tf.keras.metrics.SparseTopKCategoricalAccuracy(k=2, name="top2_accuracy"),
         ],
     )
 
